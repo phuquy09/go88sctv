@@ -519,14 +519,37 @@ function handleRutTien() {
     closeModal('rut-tien-modal');
 }
         function handleChuyenLoc() { let nn=document.getElementById('chuyen-nguoi-nhan').value; let t=parseInt(document.getElementById('chuyen-so-tien').value); if(!nn||isNaN(t)||t>currentBalance) return alert("Thông tin sai hoặc không đủ lộc!"); let saved=localStorage.getItem('GO88_'+nn); if(saved===null) return alert("Tài khoản nhận không tồn tại trên máy!"); localStorage.setItem('GO88_'+nn, parseInt(saved)+t); currentBalance-=t; updateUI(); alert("Bắn lộc thành công!"); closeModal('chuyen-loc-modal'); }
-        function guiTinChatCSKH() { let nd=document.getElementById('noi-dung-chat-cskh').value; if(!nd) return; let box=document.getElementById('box-chat-cskh'); box.innerHTML+=`<p style='color:#fff;'><b>M:</b> ${nd}</p>`; document.getElementById('noi-dung-chat-cskh').value=""; setTimeout(()=>{ box.innerHTML+=`<p style='color:#00ff66;'><b>Admin:</b>"Hệ thống ghi nhận yêu cầu của m rồi, đang check kỹ thuật nha.",
-            "Lệnh nạp/rút đang bị nghẽn mạng xíu, bạn ráng đợi 3-5 phút báo lại hệ thống nhé.",
-            "Tài khoản của bạn hoàn toàn bình thường, cứ nạp mạnh tay vào mà quất Tài Xỉu !",
-            "Code tân thủ được phát hàng ngày trên Fanpage, bạn theo dõi để húp lộc nha.",
-            "Dạ thưa quý khách, có em đây. Quý khách cần hỏi hay giải quyết lỗi gì ạ?",
-            "Hiện tại ngân hàng Money KJ Bank đang bảo trì 5 phút, bạn thao tác lại sau nhé!",
-            "Cảm ơn bạn đã góp ý, hệ thống ghi nhận và sẽ báo lên tổng đài GO88 SCTV ngay."</p>`; box.scrollTop=box.scrollHeight; },1000); }
+       function guiTinChatCSKH() {
+    let inputField = document.getElementById('noi-dung-chat-cskh');
+    let nd = inputField.value.trim();
+    if(!nd) return; 
 
+    let box = document.getElementById('box-chat-cskh');
+    // Hiển thị tin nhắn của khách
+    box.innerHTML += `<p style='margin-bottom:8px; text-align:right; color:#fff;'><b>M:</b> ${nd}</p>`;
+    inputField.value = "";
+    box.scrollTop = box.scrollHeight;
+
+    setTimeout(() => {
+        // Danh sách các câu trả lời (Mảng)
+        let replies = [
+            "Hệ thống ghi nhận yêu cầu của bạn rồi, đang check kỹ thuật nha.",
+            "Lệnh nạp/rút đang bị nghẽn mạng xíu, bạn ráng đợi 3-5 phút báo lại bên hệ thống nhé.",
+            "Tài khoản của bạn hoàn toàn bình thường, cứ nạp mạnh tay vào mà quất Tài Xỉu!",
+            "Code tân thủ được phát hàng ngày trên Fanpage, bạn theo dõi để húp lộc nha.",
+            "Dạ thưa quý khách có em đây. Quý khách cần cấp hỗ trợ hay giải quyết lỗi gì ạ?",
+            "Hiện tại ngân hàng Money KJ Bank đang bảo trì 5 phút, bạn thao tác lại sau nhé!",
+            "Cảm ơn bạn đã góp ý, hệ thống ghi nhận và sẽ báo lên tổng đài GO88 SCTV ngay."
+        ];
+
+        // Lấy ngẫu nhiên 1 câu trong mảng
+        let randomRep = replies[Math.floor(Math.random() * replies.length)];
+
+        // Hiển thị tin nhắn của Admin
+        box.innerHTML += `<p style='margin-bottom:8px; color:#00ff66;'><b>Admin:</b> ${randomRep}</p>`;
+        box.scrollTop = box.scrollHeight;
+    }, 1000);
+}
         function openTaiXiuModal() { openModal('taixiu-modal'); }
         function openTaiXiuMD5Modal() { openModal('taixiu-md5-modal'); }
         function openXocDiaModal() { openModal('xocdia-modal'); }
