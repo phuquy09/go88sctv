@@ -193,7 +193,7 @@
             </div>
             <div class="poster-card" style="pointer-events: none; border-color: #ff0000;">
                 <img src="poster-ads-3.png" onerror="this.style.display='none'">
-                <div class="card-overlay"><div class="card-title" style="color: #ff6666;">NHIỆM VỤ TÂN THỦ</div></div>
+                <div class="card-overlay"><div class="card-title" style="color: #ff6666;"> TÂN THỦ</div></div>
             </div>
         </div>
 
@@ -274,7 +274,7 @@
         </div>
         
         <p style="font-size: 13px; color: #00ff66; text-align: left; margin-bottom: 15px; font-weight: bold;">
-            ✔️ Phí giao dịch hiện tại: 0% (Hỗ trợ tân thủ)
+            ✔️ Phí giao dịch hiện tại: 0%
         </p>
         
         <button onclick="handleChuyenLoc()" style="background: linear-gradient(to bottom, #24d676, #055428); color: white; width: 100%; padding: 12px; border: none; font-weight: bold; font-size: 16px; border-radius: 8px; cursor: pointer; text-transform: uppercase;">Xác Nhận Bắn Lộc</button>
@@ -300,7 +300,7 @@
 
         <div class="mail-item" style="opacity: 0.8;">
             <div style="font-weight: bold; color: var(--gold); margin-bottom: 5px;">🎁 Quà Tân Thủ GO88 SCTV</div>
-            <div style="font-size: 13px; color: #ddd;">Chào mừng người chơi mới. Tài khoản của m đã được cộng lộc khởi nghiệp. Thử vận may ngay tại sảnh Bầu Cua King và Tài Xỉu MD5 nhé.</div>
+            <div style="font-size: 13px; color: #ddd;">Chào mừng người chơi mới. Tài khoản của bạn đã được cộng lộc khởi nghiệp. Thử vận may ngay tại sảnh Bầu Cua King và Tài Xỉu MD5 nhé.</div>
             <div style="font-size: 11px; color: #777; text-align: right; margin-top: 5px;">Hôm qua</div>
         </div>
     </div>
@@ -476,7 +476,7 @@
 
         function handleLogin() {
             let input = document.getElementById('username-input').value.trim();
-            if(!input) return alert("Nhập tên đăng nhập vô m ơi!");
+            if(!input) return alert("Nhập tên đăng nhập!");
             pName = input;
             let saved = localStorage.getItem('GO88_'+pName);
             currentBalance = saved ? parseInt(saved) : 50000;
@@ -520,12 +520,12 @@ function handleRutTien() {
 }
         function handleChuyenLoc() { let nn=document.getElementById('chuyen-nguoi-nhan').value; let t=parseInt(document.getElementById('chuyen-so-tien').value); if(!nn||isNaN(t)||t>currentBalance) return alert("Thông tin sai hoặc không đủ lộc!"); let saved=localStorage.getItem('GO88_'+nn); if(saved===null) return alert("Tài khoản nhận không tồn tại trên máy!"); localStorage.setItem('GO88_'+nn, parseInt(saved)+t); currentBalance-=t; updateUI(); alert("Bắn lộc thành công!"); closeModal('chuyen-loc-modal'); }
         function guiTinChatCSKH() { let nd=document.getElementById('noi-dung-chat-cskh').value; if(!nd) return; let box=document.getElementById('box-chat-cskh'); box.innerHTML+=`<p style='color:#fff;'><b>M:</b> ${nd}</p>`; document.getElementById('noi-dung-chat-cskh').value=""; setTimeout(()=>{ box.innerHTML+=`<p style='color:#00ff66;'><b>Admin:</b>"Hệ thống ghi nhận yêu cầu của m rồi, đang check kỹ thuật nha.",
-            "Lệnh nạp/rút đang bị nghẽn mạng xíu, m ráng đợi 3-5 phút báo lại t nhé.",
-            "Tài khoản của m hoàn toàn bình thường, cứ nạp mạnh tay vào mà quất Tài Xỉu đi m!",
-            "Code tân thủ được phát hàng ngày trên Fanpage, m theo dõi để húp lộc nha.",
-            "Dạ thưa chủ tịch, có t đây. Chủ tịch cần cấp thêm lộc hay giải quyết lỗi gì ạ?",
-            "Hiện tại ngân hàng Money KJ Bank đang bảo trì 5 phút, m thao tác lại sau nhé!",
-            "Cảm ơn m đã góp ý, t ghi nhận và sẽ báo lên tổng đài GO88 SCTV ngay."</p>`; box.scrollTop=box.scrollHeight; },1000); }
+            "Lệnh nạp/rút đang bị nghẽn mạng xíu, bạn ráng đợi 3-5 phút báo lại hệ thống nhé.",
+            "Tài khoản của bạn hoàn toàn bình thường, cứ nạp mạnh tay vào mà quất Tài Xỉu !",
+            "Code tân thủ được phát hàng ngày trên Fanpage, bạn theo dõi để húp lộc nha.",
+            "Dạ thưa quý khách, có em đây. Quý khách cần hỏi hay giải quyết lỗi gì ạ?",
+            "Hiện tại ngân hàng Money KJ Bank đang bảo trì 5 phút, bạn thao tác lại sau nhé!",
+            "Cảm ơn bạn đã góp ý, hệ thống ghi nhận và sẽ báo lên tổng đài GO88 SCTV ngay."</p>`; box.scrollTop=box.scrollHeight; },1000); }
 
         function openTaiXiuModal() { openModal('taixiu-modal'); }
         function openTaiXiuMD5Modal() { openModal('taixiu-md5-modal'); }
